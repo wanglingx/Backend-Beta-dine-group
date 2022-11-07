@@ -1,0 +1,5 @@
+host: "localhost"
+database: "annisa-mvc"
+port: 3306
+user: "root"
+password: ""
