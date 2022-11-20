@@ -20,11 +20,11 @@ class LogicSearch {
 
     filterSearchLogic = async(filterSearchData, res) => {
         if (filterSearchData.type_name) {
-            let response = await axios.get(`http://localhost/searchbyType/${filterSearchData.type_name}`)
+            let response = await axios.get(`http://localhost:3000/searchbyType/${filterSearchData.type_name}`)
             filterSearchData.type_id = response.data.response[0].type_id;
         }
         if (filterSearchData.religion_name) {
-            let response = await axios.get(`http://localhost/searchbyType/${filterSearchData.religion_name}`)
+            let response = await axios.get(`http://localhost:3000/searchbyType/${filterSearchData.religion_name}`)
             filterSearchData.religion_id = response.data.response[0].religion_id;
         }
 
