@@ -20,6 +20,7 @@ create table Restaurant (
 	religion_id varchar(255),
 	type_id varchar(255),
 	res_name varchar(255),
+	pic text,
 	create_time DATE,
 	CONSTRAINT Fk_canteen FOREIGN KEY(canteen_id)
 	REFERENCES Canteen(canteen_id),

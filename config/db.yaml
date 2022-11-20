@@ -1,5 +1,5 @@
 host: "localhost"
-database: "annisa-mvc"
+database: "betadine-project"
 port: 3306
 user: "root"
 password: ""
