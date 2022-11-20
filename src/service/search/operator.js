@@ -1,4 +1,4 @@
-const connection = require('/database/config');
+const connection = require('../../../database/connection');
 class OperatorSearch {
 
     searchOperator = (search_data,res) => {

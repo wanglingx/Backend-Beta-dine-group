@@ -1,5 +1,0 @@
-host: "localhost"
-database: "betadine-project"
-port: 3306
-user: "root"
-password: ""

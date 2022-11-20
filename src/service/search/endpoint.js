@@ -1,5 +1,5 @@
 const { LogicSearch } = require('./logic');
-const model = require('/src/model/search_model/model');
+const model = require('../../model/search_model/model');
 
 class EndpointSearch {
 

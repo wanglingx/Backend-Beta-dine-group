@@ -2,12 +2,9 @@ const express = require('express');
 const routes = require("./routes/router");
 const server1 = express();
 const port1 = process.env.PORT || 3000
-
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
-
-// const db = require('./database/config');
 
 // const handler = num => (req, res) => {
 //     const { method, url, headers, body } = req;
