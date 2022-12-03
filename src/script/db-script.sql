@@ -1,4 +1,11 @@
-# database create table script
+drop table update_rank;
+drop table menu;
+drop table user;
+drop table restaurant;
+drop table foodtype;
+drop table religion;
+drop table canteen;
+
 CREATE TABLE canteen (
 	canteen_id varchar(255) PRIMARY KEY ,
 	canteen_name varchar(255)

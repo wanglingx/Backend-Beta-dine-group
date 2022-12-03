@@ -14,13 +14,16 @@ router.get("/filterSearch", new EndpointSearch().filterSearchEndpoint)
 //score router
 // router.get('/getScoreRestuarant', new EndpointScore().getScoreRestuarantEndpoint);
 // router.get("/AddScoreRestuarant/:res_id", new EndpointScore().addScoreResruarantEndpoint);
-
 router.get("/showFoodScore", new EndpointScore().showFoodScoreEndpoint);
 router.get("/getScoreFood", new EndpointScore().getScoreFoodEndpoint);
 router.get("/AddScoreFood/:menu_id", new EndpointScore().addScoreFoodEndpoint);
 
-router.get("/MenuInfo/:menu_id", new EndpointScore().getMenuInfoEndpoint);
 //editScore
 
+//rank router
+
+//select router
+//router.get("/RetuarantInfo/:restuarant_id",new EndpointSelect().getRestuarantInfoEndpoint)
+//router.get("/MenuInfo/:menu_id", new EndpointSelect().getMenuInfoEndpoint);
 
 module.exports = router;
