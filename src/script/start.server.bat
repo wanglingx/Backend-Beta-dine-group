@@ -13,4 +13,5 @@ echo.
 echo. 
 echo. 
 
-npm run dev
+#!npm run dev
+concurrently "npm run devload" "npm run dev"

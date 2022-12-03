@@ -5,7 +5,9 @@
     "main": "server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "nodemon server.js"
+        "dev": "nodemon server.js",
+        "devload": "nodemon handler/loadBalance.js",
+        "concurrently": "concurrently \"npm run devload\" \"npm run dev\" "
     },
     "author": "",
     "license": "ISC",

@@ -3,8 +3,8 @@ const server = express();
 const axios = require('axios')
 
 const servers = [
-    "http://localhost:3000",
-    "http://localhost:3001"
+    "http://localhost:3001",
+    "http://localhost:3002"
 ]
 
 let current_state = 0;
@@ -14,7 +14,6 @@ const handler = async (req, res) => {
     current_state === (servers.length - 1) ? current_state = 0 : current_state++
     
     try {
-        
         const response = await axios({
             url: `${serv}${url}`,
             method: method,
@@ -33,9 +32,9 @@ server.use((req, res) => {
     handler(req, res)
 });
 
-server.listen(8080, err => {
+server.listen(3000, err => {
     err ?
-        console.log("Failed to listen on PORT 8080") :
+        console.log("Failed to listen on PORT 3000") :
         console.log("Load Balancer Server "
-            + "listening on PORT 8080");
+            + "listening on PORT 3000");
 })
