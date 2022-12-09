@@ -6,10 +6,20 @@ const { EndpointRank } = require('../src/service/rank/endpoint');
 const { EndpointSelect } = require('../src/service/select/endpoint');
 
 //search router
-router.get("/search", new EndpointSearch().searchEndpoint)
+router.get("/search/:keyword", new EndpointSearch().searchEndpoint)
 router.get("/seachbyReligion/:religion", new EndpointSearch().searchbyReligionEndpoint)
 router.get("/searchbyType/:type", new EndpointSearch().searchbyTypeEndpoint)
-router.get("/filterSearch", new EndpointSearch().filterSearchEndpoint)
+router.get("/searchbyCanteen/:canteen", new EndpointSearch().searchbyCanteenEndpoint)
+router.get("/searchbyMenu/:menu", new EndpointSearch().searchbyMenuEndpoint)
+router.get("/filterSearch/:religion_name/:type_name", new EndpointSearch().filterSearchEndpoint)
+router.get("/filterSearchByCanteen/:canteen_name/:menu_name", new EndpointSearch().filterSearchByCanteenEndpoint)
+router.get("/filterSearchByType/:type_name/:religion_name", new EndpointSearch().filterSearchByTypeEndpoint)
+router.get("/filterSearchByTypeCanteen/:type_name/:canteen_name", new EndpointSearch().filterSearchByTypeCanteenEndpoint)
+router.get("/filterSearchByScore/:score", new EndpointSearch().filterSearchByScoreEndpoint)
+router.get("/filterSearchByCanteenOnly/:canteen_id", new EndpointSearch().filterSearchByCanteenOnlyEndpoint)
+router.get("/filterSearchByTypeOnly/:type_id", new EndpointSearch().filterSearchByTypeOnlyEndpoint)
+router.get("/filterSearchByReligionOnly/:religion_id", new EndpointSearch().filterSearchByReligionOnlyEndpoint)
+
 
 //score router
 // router.get('/getScoreRestuarant', new EndpointScore().getScoreRestuarantEndpoint);
