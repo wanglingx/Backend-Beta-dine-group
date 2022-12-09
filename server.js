@@ -8,7 +8,10 @@ const app = express();
 const port = process.env.PORT || 3000
 const bodyParser = require('body-parser');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 89a10c5e2e0756e82d22e1f1bc1f8c02e72e993f
 // For Master process
 if (cluster.isMaster) {
     console.log(`[ Master ]${process.pid} is running`);
@@ -29,6 +32,7 @@ else {
     app.use(helmet())
     app.use(express.json());
     app.use(routes);
+<<<<<<< HEAD
 
 
     app.listen(port, err => {
@@ -38,3 +42,34 @@ else {
     });
 
 }
+=======
+    app.listen(port, err => {
+        err ?
+            console.log("Error in server setup") :
+            console.log(`[ Worker ] ${process.pid} started`);
+    });
+}
+
+//library express of node js
+// const express = require('express');
+// const server = express();
+// const routes = require("./routes/router");
+// const cors = require('cors');
+// const helmet = require('helmet');
+// const bodyParser = require('body-parser');
+
+// const port = process.env.PORT || 3000
+
+// server.use(bodyParser.urlencoded({ extended: false }));
+// server.use(bodyParser.json())
+// server.use(cors());
+// server.use(helmet())
+// server.use(express.json());
+// server.use(routes);
+
+// // Server port listen in server port 3000
+// server.listen(port, function (err) {
+//     console.log(` [HOST] http://localhost:${port}`);
+// })
+
+>>>>>>> 89a10c5e2e0756e82d22e1f1bc1f8c02e72e993f

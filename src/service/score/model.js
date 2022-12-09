@@ -1,24 +1,15 @@
 module.exports = {
-    // pointRes: {
-    //     res_id: '',
-    //     res_point: ''
-    // },
-    pointFood: {
-        menu_id: '',
-        score: ''
+    User: {
+        user_id: '',
+        student_id: '',
+        firstname: '',
+        lastname: '',
+        status: '',
+        user_timestamp: ''
     },
-
-    ShowMenuInfo: {
+    Update_score: {
+        user_id: '',
         menu_id: '',
-        menu_name: '',
-        price: '',
-        detail: '',
         score: '',
-        menu_picture: '',
-        restaurant_id: '',
-        restaurant_name: '',
-        canteen_name: '',
-        foodtype_name: '',
-        religion_name: '',
-    }
+    },
 }

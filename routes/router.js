@@ -6,25 +6,42 @@ const { EndpointRank } = require('../src/service/rank/endpoint');
 const { EndpointSelect } = require('../src/service/select/endpoint');
 
 //search router
-router.get("/search", new EndpointSearch().searchEndpoint)
+router.get("/search/:keyword", new EndpointSearch().searchEndpoint)
 router.get("/seachbyReligion/:religion", new EndpointSearch().searchbyReligionEndpoint)
 router.get("/searchbyType/:type", new EndpointSearch().searchbyTypeEndpoint)
+<<<<<<< HEAD
 router.get("/filterSearch", new EndpointSearch().filterSearchEndpoint)
 router.get("/test/id=:_id" , (req, res) => {
     id = req.params._id
     console.log(id) 
 })
+=======
+router.get("/searchbyCanteen/:canteen", new EndpointSearch().searchbyCanteenEndpoint)
+router.get("/searchbyMenu/:menu", new EndpointSearch().searchbyMenuEndpoint)
+router.get("/filterSearch/:religion_name/:type_name", new EndpointSearch().filterSearchEndpoint)
+router.get("/filterSearchByCanteen/:canteen_name/:menu_name", new EndpointSearch().filterSearchByCanteenEndpoint)
+router.get("/filterSearchByType/:type_name/:religion_name", new EndpointSearch().filterSearchByTypeEndpoint)
+router.get("/filterSearchByTypeCanteen/:type_name/:canteen_name", new EndpointSearch().filterSearchByTypeCanteenEndpoint)
+router.get("/filterSearchByScore/:score", new EndpointSearch().filterSearchByScoreEndpoint)
+router.get("/filterSearchByCanteenOnly/:canteen_id", new EndpointSearch().filterSearchByCanteenOnlyEndpoint)
+router.get("/filterSearchByTypeOnly/:type_id", new EndpointSearch().filterSearchByTypeOnlyEndpoint)
+router.get("/filterSearchByReligionOnly/:religion_id", new EndpointSearch().filterSearchByReligionOnlyEndpoint)
+
+>>>>>>> 89a10c5e2e0756e82d22e1f1bc1f8c02e72e993f
 
 //score router
-// router.get('/getScoreRestuarant', new EndpointScore().getScoreRestuarantEndpoint);
-// router.get("/AddScoreRestuarant/:res_id", new EndpointScore().addScoreResruarantEndpoint);
-router.get("/showFoodScore", new EndpointScore().showFoodScoreEndpoint);
-router.get("/getScoreFood", new EndpointScore().getScoreFoodEndpoint);
-router.get("/AddScoreFood/:menu_id", new EndpointScore().addScoreFoodEndpoint);
-
-//editScore
+router.get("/getUser/:student_id", new EndpointScore().getUserEndpoint);
+router.get('/addScoreFood/:menu_id', new EndpointScore().addScoreEndpoint)
+router.get("/getScore/:user_id/:menu_id", new EndpointScore().getscoreEndpoint);
+router.post('/addScoreUpdateRank', new EndpointScore().addScoreUpdateRankEndpoint);
+router.post('/addUser', new EndpointScore().addUserEndpoint);
 
 //rank router
+router.get("/getScorebyMenu/:menu_id", new EndpointRank().getScorebyMenuEndpoint);
+router.get("/addMenuScore/:menu_id", new EndpointRank().addMenuScoreEndpoint);
+router.get("/getMenuInfo/:menu_id", new EndpointRank().getMenuInfoEndpoint);
+router.get("/addRestaurantScore/:menu_id", new EndpointRank().addRestaurantScoreEndpoint);
+router.get("/getAvgRestaurant/:restaurant_id", new EndpointRank().getAvgRestaurantEndpoint);
 
 //select router
 router.get("/RetuarantInfo/restuarantid=:restuarant_id",new EndpointSelect().getRestuarantInfoEndpoint)
