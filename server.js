@@ -1,53 +1,40 @@
 const express = require('express');
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
 const routes = require("./routes/router");
-const server1 = express();
-const port1 = process.env.PORT || 3001
-const server2 = express();
-const port2 = process.env.PORT || 3002
-
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
+const app = express();
+const port = process.env.PORT || 3000
+const bodyParser = require('body-parser');
 
-const handler = num => (req, res) => {
-    const { method, url, headers, body } = req;
-    res.send('Response from server ' + num);
+
+// For Master process
+if (cluster.isMaster) {
+    console.log(`[ Master ]${process.pid} is running`);
+    console.log(`[starting] http://localhost:${port}/`);
+    for (let i = 0; i < numCPUs; i++) {
+        cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code, signal) => {
+        console.log(`worker ${worker.process.pid} died`);
+    });
 }
 
-server1.get('*', handler(1)).post('*', handler(1));
-server2.get('*', handler(2)).post('*', handler(2));
+else {
+    app.use(bodyParser.json())
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(cors());
+    app.use(helmet())
+    app.use(express.json());
+    app.use(routes);
 
-server1.use(bodyParser.json())
-server1.use(bodyParser.urlencoded({ extended: false }));
-server1.use(cors());
-server1.use(helmet());
-server1.use(express.json());
-server1.use(routes);
 
-server2.use(bodyParser.json())
-server2.use(bodyParser.urlencoded({ extended: false }));
-server2.use(cors());
-server2.use(helmet());
-server2.use(express.json());
-server2.use(routes);
+    app.listen(port, err => {
+        err ?
+            console.log("Error in server setup") :
+            console.log(`[ Worker ] ${process.pid} started`);
+    });
 
-// Server port listen in server port 3000
-server1.listen(port1, function (err,res) {
-    if (err) {
-        return res.status(500).send("Cannot connect server");
-    }
-    else {
-        console.log(`Server started on port ${port1}`);
-        console.log(`[Starting] http://localhost:${port1}/`);
-    }
-})
-
-server2.listen(port2, function (err, res) {
-    if (err) {
-        return res.status(500).send("Cannot connect server");
-    }
-    else {
-        console.log(`Server started on port ${port2}`);
-        console.log(`[Starting] http://localhost:${port2}/`);
-    }
-})
+}

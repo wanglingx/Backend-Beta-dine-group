@@ -13,6 +13,7 @@ class EndpointSearch {
 
     searchbyReligionEndpoint = (req, res) => {
         let religion = req.params.religion;
+        console.log(religion)
         new LogicSearch().searchbyReligionLogic(religion, res);
     }
 
