@@ -1,41 +1,10 @@
 const connection = require('../../../database/connection');
 class OperatorScore {
-
-    // getScoreRestuarantOperator = (res_id, res) => {
-    //     let sql = `SELECT point_res FROM Restuarant
-    //                 WHERE res_id = ?`
-    //     connection.query(sql, [
-    //         res_id
-    //     ],function (err, data) {
-    //         if (err) {
-    //             console.log(err);
-    //         }
-    //         else {
-    //             return res.status(201).send({ response: data });
-    //         }
-    //     })
-    // }
-
-    // addScoreResruarantOperator = (scoreRes, res) => {
-    //     let sql = `UPDATE Restuarant SET point_res = ? WHERE res_id = ?`
-    //     connection.query(sql, [
-    //         scoreRes.res_point,
-    //         scoreRes.res_id
-    //     ], function (err) {
-    //         if (err) {
-    //             console.log(err)
-    //         }
-    //         else {
-    //             return res.status(201).send("Your Done!")
-    //         }
-    //     })
-    // }
-
-    getScoreFoodOperator = (menu_id, res) => {
-        let sql = `SELECT * FROM menu
-                    WHERE menu_id = ?`
+    getUserOperator = (student_id, res) => {
+        let sql = `SELECT * FROM user
+                    WHERE student_id = ?`
         connection.query(sql, [
-            menu_id
+            student_id
         ], function (err, data) {
             if (err) {
                 console.log(err);
@@ -46,21 +15,74 @@ class OperatorScore {
         })
     }
 
-    addScoreFoodOperator = (scoreFood, res) => {
-        let sql = `UPDATE Menu SET point_food = ? WHERE menu_id = ?`
+    getUpdateScore = (update_score, res) => {
+        let sql = `SELECT * FROM update_rank WHERE user_id = ? AND menu_id=?`
         connection.query(sql, [
-            scoreFood.point_food,
-            scoreFood.menu_id
-        ], function (err) {
+            update_score.user_id,
+            update_score.menu_id
+        ], function (err, data) {
             if (err) {
-                console.log(err)
+                console.log(err);
             }
             else {
-                return res.status(201).send("Your Done!")
+                return res.status(201).send({ response: data });
             }
         })
     }
 
+    addUserOperator = (User, res) => {
+        let sql = `INSERT INTO user(user_id,student_id,firstname,lastname,status,user_timestamp)
+                    VALUES(?,?,?,?,0,CURRENT_TIMESTAMP())`
+        connection.query(sql, [
+            User.user_id,
+            User.student_id,
+            User.firstname,
+            User.lastname,
+        ], function (err) {
+            if (err) {
+                console.log(err)
+                res.status(400).send({ response: "Add user fail!" })
+            }
+            else {
+                return res.status(201).send({ response: "Add user success!" });
+            }
+        })
+    }
+
+    addScoreOperator = (user_id, menu_id, score, res) => {
+        let sql = `INSERT INTO update_rank(user_id,menu_id,score,ur_timestamp)
+                   VALUES(?,?,?,CURRENT_TIMESTAMP())`
+        connection.query(sql, [
+            user_id,
+            menu_id,
+            score
+        ], function (err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                return res.status(201).send({ response: "You're Done!" })
+            }
+        })
+    }
+
+    UpdateScore24HOperator = (update_score, res) => {
+        let sql = `UPDATE update_rank
+                   SET score = ?,ur_timestamp = CURRENT_TIMESTAMP()
+                   WHERE user_id = ? AND menu_id = ?`
+        connection.query(sql, [
+            update_score.score,
+            update_score.user_id,
+            update_score.menu_id
+        ], function (err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                return res.status(201).send({response : "You're Done!"})
+            }
+        })
+    }
 }
 module.exports = {
     OperatorScore

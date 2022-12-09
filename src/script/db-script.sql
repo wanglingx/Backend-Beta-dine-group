@@ -39,7 +39,7 @@ CREATE TABLE restaurant (
 
 CREATE TABLE user (
 	user_id varchar(255) PRIMARY KEY ,
-	student_id varchar(255) ,
+	student_id varchar(255) UNIQUE NOT NULL,
 	firstname varchar(255) ,
 	lastname varchar(255),
 	status varchar(255) ,
@@ -63,7 +63,7 @@ CREATE TABLE update_rank (
 	FOREIGN KEY(user_id) REFERENCES user(user_id) ,
 	menu_id varchar(255) ,
 	FOREIGN KEY(menu_id) REFERENCES menu(menu_id) ,
-	uprank_combinekey_id integer NOT NULL ,
 	CONSTRAINT uprank_combinekey_id PRIMARY KEY(user_id , menu_id ) ,
-	score numeric(2,1)
+	score numeric(2,1),
+	ur_timestamp timestamp
 );
