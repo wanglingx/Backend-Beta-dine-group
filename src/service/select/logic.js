@@ -1,5 +1,4 @@
 const { OperatorSelect } = require('./operator');
-const { EndpointSelect } = require('./endpoint');
 const axios = require('axios');
 
 class LogicSelect {
@@ -23,20 +22,20 @@ class LogicSelect {
     getFoodtypeLogic = (foodtype_id , res) =>{
         new OperatorSelect(). getFoodtype(foodtype_id , res)
     }
-    gethomeLogic =(res) =>{
-        let response =  axios.get(`http://localhost:3000/BestRestuarantInfo` )
-        // SelectbestRestaurant = response.data.response;
-        // res.status(201).send(response)
-        console.log(response)
-        let response2 = axios.get(`http://localhost:3000/BestFoodInfo`  )
-        res.status(201).send(response2)
+//     gethomeLogic =(res) =>{
+//         let response =  axios.get(`http://localhost:3000/BestRestuarantInfo` )
+//         // SelectbestRestaurant = response.data.response;
+//         // res.status(201).send(response)
+//         console.log(response)
+//         let response2 = axios.get(`http://localhost:3000/BestFoodInfo`  )
+//         res.status(201).send(response2)
 
-        // let response3 = axios.get(`http://localhost:3000/ReligionInfo/religionid=RE01`  )
-        // selectReilgion.religion_id = response3.data.response[0].religion_id
-        // selectReilgion = response3.data.response;
+//         // let response3 = axios.get(`http://localhost:3000/ReligionInfo/religionid=RE01`  )
+//         // selectReilgion.religion_id = response3.data.response[0].religion_id
+//         // selectReilgion = response3.data.response;
         
 
-    }
+//     }
 }
 module.exports = {
     LogicSelect

@@ -14,7 +14,7 @@ class EndpointSelect {
     }
     getMenuInfoEndpoint = (req, res) => {
         let menuID = req.params.menu_id
-        new LogicSelect().getRestuarantLogic(menuID , res)
+        new LogicSelect().getMenuLogic(menuID , res)
     }
     getReligionInfoEndpoint = (req, res) => {
         let religionID =req.params.religion_id
@@ -30,9 +30,9 @@ class EndpointSelect {
         let foodtype_id = req.params.foodtype_id
         new LogicSelect(). getFoodtypeLogic(foodtype_id , res)
     }
-    gethomeEndpoint =(req, res) => {
-        new LogicSelect(). gethomeLogic(res)
-    }
+    // gethomeEndpoint =(req, res) => {
+    //     new LogicSelect(). gethomeLogic(res)
+    // }
 }
 module.exports = {
     EndpointSelect
