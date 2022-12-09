@@ -1,5 +1,4 @@
 const mysql = require('mysql');
-
     const connection = mysql.createConnection({
         host: 'localhost',
         database: 'betadine-project',
@@ -9,12 +8,8 @@ const mysql = require('mysql');
     });
 
     connection.connect(function (err) {
-        if (err) {
-            console.log("Database connection fualt");
-        }
-        else {
-            console.log("Database Connected!")
-        }
+        if (err) throw err;
+        console.log("Connected!");
     });
     
 module.exports = connection;

@@ -9,18 +9,21 @@ const { EndpointSelect } = require('../src/service/select/endpoint');
 router.get("/search", new EndpointSearch().searchEndpoint)
 router.get("/seachbyReligion/:religion", new EndpointSearch().searchbyReligionEndpoint)
 router.get("/searchbyType/:type", new EndpointSearch().searchbyTypeEndpoint)
-router.get("/filterSearch", new EndpointSearch().filterSearchEndpoint)
+router.get("/filterSearch/:religion_name/:type_name", new EndpointSearch().filterSearchEndpoint)
 
 //score router
-// router.get('/getScoreRestuarant', new EndpointScore().getScoreRestuarantEndpoint);
-// router.get("/AddScoreRestuarant/:res_id", new EndpointScore().addScoreResruarantEndpoint);
-router.get("/showFoodScore", new EndpointScore().showFoodScoreEndpoint);
-router.get("/getScoreFood", new EndpointScore().getScoreFoodEndpoint);
-router.get("/AddScoreFood/:menu_id", new EndpointScore().addScoreFoodEndpoint);
-
-//editScore
+router.get("/getUser/:student_id", new EndpointScore().getUserEndpoint);
+router.get('/addScoreFood/:menu_id', new EndpointScore().addScoreEndpoint)
+router.get("/getScore/:user_id/:menu_id", new EndpointScore().getscoreEndpoint);
+router.post('/addScoreUpdateRank', new EndpointScore().addScoreUpdateRankEndpoint);
+router.post('/addUser', new EndpointScore().addUserEndpoint);
 
 //rank router
+router.get("/getScorebyMenu/:menu_id", new EndpointRank().getScorebyMenuEndpoint);
+router.get("/addMenuScore/:menu_id", new EndpointRank().addMenuScoreEndpoint);
+router.get("/getMenuInfo/:menu_id", new EndpointRank().getMenuInfoEndpoint);
+router.get("/addRestaurantScore/:menu_id", new EndpointRank().addRestaurantScoreEndpoint);
+router.get("/getAvgRestaurant/:restaurant_id", new EndpointRank().getAvgRestaurantEndpoint);
 
 //select router
 //router.get("/RetuarantInfo/:restuarant_id",new EndpointSelect().getRestuarantInfoEndpoint)

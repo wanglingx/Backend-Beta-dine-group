@@ -2,32 +2,71 @@ const connection = require('../../../database/connection');
 class OperatorSearch {
 
     searchOperator = (search_data,res) => {
-        let sql = ` SELECT res_name FROM Restaurant
-                WHERE res_name LIKE ? `
+        let sql = ` SELECT restaurant_name FROM restaurant
+                WHERE restaurant_name LIKE ? `
         connection.query(sql,[search_data],
             function (err, data) {
                 if (err) {
-                    sql = `SELECT menu_name FROM Menu
+                    console.log(err)
+                }
+                if (data.length <= 0) {
+                    sql = `SELECT menu_name FROM menu
                     WHERE menu_name LIKE ?`
                     connection.query(sql, [search_data],
                         function (err, data) {
-                            if (err) {
+                            if (err){
                                 console.log(err)
                             }
-                            else
-                            {
+                            if (data.length <= 0) {
+                                sql = `SELECT religion_name FROM religion
+                                WHERE religion_name LIKE ?`
+                                connection.query(sql, [search_data],
+                                    function (err, data) {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                        if (data.length <= 0) {
+                                            sql = `SELECT foodtype_name FROM foodtype
+                                            WHERE foodtype_name LIKE ?`
+                                            connection.query(sql, [search_data],
+                                            function (err, data){
+                                                if (err) {
+                                                    console.log(err)
+                                                }
+                                                if (data.length <= 0) {
+                                                    sql = `SELECT canteen_name FROM canteen
+                                                    WHERE canteen_name LIKE ?`
+                                                    connection.query(sql, [search_data],
+                                                    function (err, data){
+                                                        if (err) {
+                                                            console.log(err)
+                                                        }
+                                                        else {
+                                                            return res.status(201).send({ response: data });
+                                                        }
+                                                    })
+                                                }
+                                            })
+                                        }
+                                        else
+                                        {
+                                            return res.status(201).send({ response: data });
+                                        }
+                                    })
+                            }
+                            else {
                                 return res.status(201).send({ response: data });
                             }
                         })
                 }
-                else {
+                else{
                     return res.status(201).send({ response: data });
                 }
             })
     }
 
     searchbyReligionOperator = (religion_name, res) => {
-        let sql = `SELECT religion_id FROM Religion
+        let sql = `SELECT religion_id FROM religion
                 WHERE religion_name = ?`
         connection.query(sql, [religion_name],
             function (err, data) {
@@ -52,10 +91,10 @@ class OperatorSearch {
             })
     }
 
-    searchbyTypeOperator = (type_name, res) => {
-        let sql = `SELECT type_id FROM Food_type
-                WHERE type_name = ?`
-        connection.query(sql, [type_name],
+    searchbyTypeOperator = (foodtype_name, res) => {
+        let sql = `SELECT foodtype_id FROM foodtype
+                WHERE foodtype_name = ?`
+        connection.query(sql, [foodtype_name],
             function (err, data) {
                 if (err) {
                     console.log(err);
@@ -67,8 +106,8 @@ class OperatorSearch {
     }
 
     getRestaurantbyFilter = (filterSearchData, res) => {
-        let sql = `SELECT res_name,pic FROM Restaurant
-                    WHERE type_id = ? OR religion_id = ?`
+        let sql = `SELECT restaurant_name,restaurant_picture FROM restaurant
+                    WHERE foodtype_id = ? OR religion_id = ?`
         connection.query(sql, [
             filterSearchData.type_id,
             filterSearchData.religion_id

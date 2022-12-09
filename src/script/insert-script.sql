@@ -38,3 +38,9 @@ INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id
 VALUES ('MENU05','ราดหน้าทะเล',40,'ขนมาทั้งทะเลแล้วจ้า',0.0,'','RES02',CURRENT_TIMESTAMP());
 INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
 VALUES ('MENU06','ยำมาม่าทะเล',60,'',0.0,'','RES04',CURRENT_TIMESTAMP());
+
+INSERT INTO user(user_id,student_id,firstname,lastname,status,user_timestamp) VALUES('user01','63xxx000','defualt','lastname',0,CURRENT_TIMESTAMP());
+
+insert into update_rank(user_id,menu_id,score,timestamp) values('user01','MENU01','5',CURRENT_TIMESTAMP());
+
+SELECT score FROM menu WHERE menu_id = 'MENU01';

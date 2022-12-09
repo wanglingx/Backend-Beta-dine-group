@@ -7,8 +7,8 @@ class EndpointSearch {
         this.filterSearchData = model.filterSearch;
     }
     searchEndpoint = (req, res) => {
-        let saerch_data = req.query.saerch_data;
-        new LogicSearch().searchLogic(saerch_data, res);
+        let keyword = req.params.keyword;
+        new LogicSearch().searchLogic(keyword, res);
     }
 
     searchbyReligionEndpoint = (req, res) => {
@@ -22,13 +22,9 @@ class EndpointSearch {
     }
 
     filterSearchEndpoint = (req, res) => {
-        if (req.query.religion_name) {
-            this.filterSearchData.religion_name = req.query.religion_name;
-        }
-        else {
-            this.filterSearchData.type_name = req.query.type_name;
-        }
-        new LogicSearch().filterSearchLogic(this.filterSearchData, res);
+            this.filterSearchData.religion_name = req.params.religion_name;
+            this.filterSearchData.type_name = req.params.type_name;
+            new LogicSearch().filterSearchLogic(this.filterSearchData, res);
     }
 }
 module.exports = {

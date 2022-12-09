@@ -6,6 +6,6 @@ This is final term project software engineering of computer science KMITL year 3
 
 # execute command
 # load balance 
-concurrently "node handler/loadBalance.js" "node server.js"
+npm run concurrently
 # normal 
-npm run dev
+npm run dev 

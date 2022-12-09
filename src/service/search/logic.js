@@ -19,14 +19,16 @@ class LogicSearch {
     }
 
     filterSearchLogic = async(filterSearchData, res) => {
-        if (filterSearchData.type_name) {
-            let response = await axios.get(`http://localhost:3000/searchbyType/${filterSearchData.type_name}`)
-            filterSearchData.type_id = response.data.response[0].type_id;
-        }
-        if (filterSearchData.religion_name) {
-            let response = await axios.get(`http://localhost:3000/searchbyType/${filterSearchData.religion_name}`)
-            filterSearchData.religion_id = response.data.response[0].religion_id;
-        }
+        console.log(filterSearchData)
+        var uri = `http://localhost:3000/searchbyType/${filterSearchData.type_name}`;
+        var URLEncode = encodeURI(uri); 
+        let response = await axios.get(URLEncode)
+        filterSearchData.type_id = response.data.response[0].foodtype_id;
+
+        uri = `http://localhost:3000/seachbyReligion/${filterSearchData.religion_name}`;
+        URLEncode = encodeURI(uri); 
+        response = await axios.get(URLEncode)
+        filterSearchData.religion_id = response.data.response[0].religion_id;
 
         new OperatorSearch().getRestaurantbyFilter(filterSearchData, res);
     }
