@@ -42,5 +42,3 @@ VALUES ('MENU06','ยำมาม่าทะเล',60,'',0.0,'','RES04',CURREN
 INSERT INTO user(user_id,student_id,firstname,lastname,status,user_timestamp) VALUES('user01','63xxx000','defualt','lastname',0,CURRENT_TIMESTAMP());
 
 insert into update_rank(user_id,menu_id,score,timestamp) values('user01','MENU01','5',CURRENT_TIMESTAMP());
-
-SELECT score FROM menu WHERE menu_id = 'MENU01';
