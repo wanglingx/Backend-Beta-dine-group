@@ -25,6 +25,10 @@ INSERT INTO restaurant(restaurant_id,restaurant_name,restaurant_time,phone_numbe
 VALUES ('RES03','ร้านลุงพจน์','07.00-17.00 น.','098-xxx-0008',0.0,'','CAN02','RE02','FT05', CURRENT_TIMESTAMP());
 INSERT INTO restaurant(restaurant_id,restaurant_name,restaurant_time,phone_number,restaurant_score,restaurant_picture,canteen_id,religion_id,foodtype_id,restaurant_timestamp) 
 VALUES ('RES04','ร้านเมะ','07.00-17.00 น.','098-xxx-0008',0.0,'','CAN07','RE01','FT05', CURRENT_TIMESTAMP());
+INSERT INTO restaurant(restaurant_id,restaurant_name,restaurant_time,phone_number,restaurant_score,restaurant_picture,canteen_id,religion_id,foodtype_id,restaurant_timestamp) 
+VALUES ('RES05','ร้านป้าวา อิสลามซิ่ง','07.00-17.00 น.','098-xxx-0008',4.5,'','CAN07','RE01','FT05', CURRENT_TIMESTAMP());
+INSERT INTO restaurant(restaurant_id,restaurant_name,restaurant_time,phone_number,restaurant_score,restaurant_picture,canteen_id,religion_id,foodtype_id,restaurant_timestamp) 
+VALUES ('RES05','ร้านป้าสา อิสลามบ้านไกล','07.00-17.00 น.','098-xxx-0008',4.5,'','CAN07','RE01','FT05', CURRENT_TIMESTAMP());
 
 INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
 VALUES ('MENU01','ข้าวผัดกุ้ง',40,'ข้าวผัดกุ้งเน้น ๆ เน้นใส่ใจ ไม่เน้นใส่กุ้ง',0.0,'','RES02',CURRENT_TIMESTAMP());
