@@ -49,7 +49,7 @@ class OperatorRank {
             }
         })
     }
-    
+
     addRestaurantScoreOperator = (MenuScore, res) => {
         let sql = ` UPDATE restaurant
                     SET restaurant_score = ?, 
@@ -75,6 +75,42 @@ class OperatorRank {
         connection.query(sql, [
             MenuScore.restaurant_id
         ], function (err, data) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                return res.status(201).send({ response: data });
+            }
+        })
+    }
+
+    getTop4MenuInfoOperator = (res) => {
+        let sql = ` SELECT * FROM 
+                    (
+                        SELECT * FROM menu
+                        WHERE score >= 4.0  
+                        ORDER BY RAND() LIMIT 4
+                    ) menu
+                    ORDER BY score DESC`
+        connection.query(sql, function (err, data) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                return res.status(201).send({ response: data });
+            }
+        })
+    }
+
+    getTop4RestaurantInfoOperator = (res) => {
+        let sql = ` SELECT * FROM 
+                    (
+                        SELECT * FROM restaurant 
+                        WHERE restaurant_score >= 4.0  
+                        ORDER BY RAND() LIMIT 4
+                    ) restaurant
+                    ORDER BY restaurant_score DESC`
+        connection.query(sql, function (err, data) {
             if (err) {
                 console.log(err);
             }

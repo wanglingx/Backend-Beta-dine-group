@@ -31,6 +31,14 @@ class LogicRank {
     getAvgRestaurantLogic = (MenuScore, res) => {
         new OperatorRank().getAvgRestaurantOperator(MenuScore, res);
     }
+
+    getTop4MenuInfoLogic = (res) => {
+        new OperatorRank().getTop4MenuInfoOperator(res);
+    }
+
+    getTop4RestaurantInfoLogic = (res) => {
+        new OperatorRank().getTop4RestaurantInfoOperator(res);
+    }
 }
 
 module.exports = {

@@ -72,6 +72,7 @@ class OperatorSelect {
                     }
                 })
     }
+    
     getFoodtype =(foodtype_id , res)=>{
         let sql =`SELECT restaurant_id , restaurant_name , restaurant_time , phone_number , restaurant_score , restaurant_picture , canteen_id , religion_id 
                     FROM Restaurant

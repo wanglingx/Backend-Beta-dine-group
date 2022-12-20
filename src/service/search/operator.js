@@ -195,8 +195,9 @@ class OperatorSearch {
             }
         )
     }
+    
     getRestaurantbyScoreFilter = (restaurant_score, res) => {
-        let sql = `SELECT restaurant_id ,restaurant_name,restaurant_picture FROM restaurant
+        let sql = `SELECT restaurant_id ,restaurant_name,restaurant_picture,restaurant_score FROM restaurant
                 WHERE restaurant_score = ?`
         connection.query(sql, [restaurant_score],
             function (err, data) {
@@ -209,7 +210,7 @@ class OperatorSearch {
             })
     }
     getRestaurantbyCanteenOnlyFilter = (canteen_id, res) => {
-        let sql = `SELECT restaurant_id ,restaurant_name,restaurant_picture FROM restaurant
+        let sql = `SELECT restaurant_id ,restaurant_name,restaurant_picture, restaurant_score FROM restaurant
                 WHERE canteen_id = ?`
         connection.query(sql, [canteen_id],
             function (err, data) {
@@ -222,7 +223,7 @@ class OperatorSearch {
             })
     }
     getRestaurantbyTypeOnlyFilter = (foodtype_id, res) => {
-        let sql = `SELECT restaurant_id , restaurant_name,restaurant_picture FROM restaurant
+        let sql = `SELECT restaurant_id , restaurant_name,restaurant_picture,restaurant_score FROM restaurant
                 WHERE foodtype_id = ?`
         connection.query(sql, [foodtype_id],
             function (err, data) {
@@ -235,7 +236,7 @@ class OperatorSearch {
             })
     }
     getRestaurantbyReligionOnlyFilter = (religion_id, res) => {
-        let sql = `SELECT restaurant_id , restaurant_name,restaurant_picture FROM restaurant
+        let sql = `SELECT restaurant_id , restaurant_name,restaurant_picture,restaurant_score FROM restaurant
                 WHERE religion_id = ?`
         connection.query(sql, [religion_id],
             function (err, data) {

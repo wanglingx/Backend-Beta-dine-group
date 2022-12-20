@@ -11,10 +11,12 @@ router.get("/seachbyReligion/:religion", new EndpointSearch().searchbyReligionEn
 router.get("/searchbyType/:type", new EndpointSearch().searchbyTypeEndpoint)
 router.get("/searchbyCanteen/:canteen", new EndpointSearch().searchbyCanteenEndpoint)
 router.get("/searchbyMenu/:menu", new EndpointSearch().searchbyMenuEndpoint)
+
 router.get("/filterSearch/:religion_name/:type_name", new EndpointSearch().filterSearchEndpoint)
 router.get("/filterSearchByCanteen/:canteen_name/:menu_name", new EndpointSearch().filterSearchByCanteenEndpoint)
 router.get("/filterSearchByType/:type_name/:religion_name", new EndpointSearch().filterSearchByTypeEndpoint)
 router.get("/filterSearchByTypeCanteen/:type_name/:canteen_name", new EndpointSearch().filterSearchByTypeCanteenEndpoint)
+
 router.get("/filterSearchByScore/:score", new EndpointSearch().filterSearchByScoreEndpoint)
 router.get("/filterSearchByCanteenOnly/:canteen_id", new EndpointSearch().filterSearchByCanteenOnlyEndpoint)
 router.get("/filterSearchByTypeOnly/:type_id", new EndpointSearch().filterSearchByTypeOnlyEndpoint)
@@ -34,13 +36,19 @@ router.get("/getMenuInfo/:menu_id", new EndpointRank().getMenuInfoEndpoint);
 router.get("/addRestaurantScore/:menu_id", new EndpointRank().addRestaurantScoreEndpoint);
 router.get("/getAvgRestaurant/:restaurant_id", new EndpointRank().getAvgRestaurantEndpoint);
 
+router.get("/Top4MenuInfo", new EndpointRank().getTop4MenuInfoEndpoint);
+router.get("/Top4RestaurantInfo", new EndpointRank().getTop4RestaurantInfoEndpoint);
+
 //select router
-router.get("/RetuarantInfo/restuarantid=:restuarant_id",new EndpointSelect().getRestuarantInfoEndpoint)
+router.get("/RetuarantInfo/restuarantid=:restuarant_id", new EndpointSelect().getRestuarantInfoEndpoint)
+
 router.get("/MenuInfo/menuid=:menu_id", new EndpointSelect().getMenuInfoEndpoint)
 router.get("/ReligionInfo/religionid=:religion_id",new EndpointSelect().getReligionInfoEndpoint )
 router.get("/BestFoodInfo" ,new EndpointSelect(). getBestFoodInfoEndpoint  )
-router.get("/BestRestuarantInfo" ,new EndpointSelect(). getBestRestuarantInfoEndpoint  )
-router.get("/foodType/foodType=:foodtype_id" , new EndpointSelect().getFoodtypeInfoEndpoint)
+router.get("/BestRestuarantInfo", new EndpointSelect().getBestRestuarantInfoEndpoint)
+
+router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeInfoEndpoint)
+//router.get("/")
 // router.get("/home" , new EndpointSelect().gethomeEndpoint)
 
 module.exports = router;
