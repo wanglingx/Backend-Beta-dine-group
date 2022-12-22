@@ -4,6 +4,7 @@ const { EndpointSearch } = require('../src/service/search/endpoint');
 const { EndpointScore } = require('../src/service/score/endpoint');
 const { EndpointRank } = require('../src/service/rank/endpoint');
 const { EndpointSelect } = require('../src/service/select/endpoint');
+const { EndpointAdmin } = require('../src/service/admin/endpoint');
 
 //search router
 router.get("/search/:keyword", new EndpointSearch().searchEndpoint)
@@ -50,5 +51,10 @@ router.get("/BestRestuarantInfo", new EndpointSelect().getBestRestuarantInfoEndp
 router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeInfoEndpoint)
 //router.get("/")
 // router.get("/home" , new EndpointSelect().gethomeEndpoint)
+
+
+//admin part
+/* Restaurant */
+/* Menu */
 
 module.exports = router;
