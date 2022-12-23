@@ -9,6 +9,9 @@ const { EndpointDel } = require('../src/service/admin/delete/endpoint') /* delet
 const { EndpointIns } = require('../src/service/admin/insert/endpoint') /* insert */
 const { EndpointUpd } = require('../src/service/admin/update/endpoint') /* update */
 
+//login
+router.post('/login', new EndpointAdmin().loginEndpoint);
+router.post('/getPasswordMaching', new EndpointAdmin().getPasswordMaching);
 
 //search router
 router.get("/search/:keyword", new EndpointSearch().searchEndpoint)

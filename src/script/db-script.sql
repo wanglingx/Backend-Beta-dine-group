@@ -74,8 +74,3 @@ create table admin (
     timestamps timestamp
 );
 
-create table admin (
-    admin_id varchar(255),
-    password varchar(255),
-    timestamps timestamp
-); 
