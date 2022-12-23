@@ -4,7 +4,7 @@ const mysql = require('mysql');
         database: 'betadine-project',
         port: 3306,
         user: 'root',
-        password: ''
+        password: '1234'
     });
 
     connection.connect(function (err) {
