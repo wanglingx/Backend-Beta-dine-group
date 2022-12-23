@@ -25,6 +25,14 @@ class EndpointRank {
         this.MenuScore.restaurant_id = req.params.restaurant_id;
         new LogicRank().getAvgRestaurantLogic(this.MenuScore, res);
     } 
+
+    getTop4MenuInfoEndpoint = (req, res) => {
+        new LogicRank().getTop4MenuInfoLogic(res);
+    }
+
+    getTop4RestaurantInfoEndpoint = (req, res) => {
+        new LogicRank().getTop4RestaurantInfoLogic(res);
+    }
 }
 module.exports = {
     EndpointRank

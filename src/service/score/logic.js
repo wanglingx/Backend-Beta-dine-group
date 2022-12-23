@@ -64,7 +64,7 @@ class LogicScore {
                 console.log("Update new score success!")
             }
             else {
-                return res.status(400).send("ํYou are alrady to add point this menu! Comeback in the next 24 Hours")
+                return res.status(400).send("ํYou were added point this menu! Comeback in the next 24 Hours")
             }
         }
         await axios.get(`http://localhost:3000/addMenuScore/${Update_score.menu_id}`)
