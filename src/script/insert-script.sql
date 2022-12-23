@@ -150,3 +150,6 @@ VALUES ('MENU44','แกงจืดหมู',40,'เนื้อหมูแ�
 
 INSERT INTO user(user_id,student_id,firstname,lastname,status,user_timestamp)
 VALUES ('USER01','63xxx000','defultName','defultLastname',0,CURRENT_TIMESTAMP());
+
+INSERT INTO admin(admin_id,password,timestamps)
+VALUES ('ADMIN01','12345678910',CURRENT_TIMESTAMP());

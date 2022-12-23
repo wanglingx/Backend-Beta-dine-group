@@ -39,7 +39,7 @@ class LogicScore {
         let response1 =  await axios.get(`http://localhost:3000/getScore/${Update_score.user_id}/${Update_score.menu_id}`);
         let response_length1 = response1.data.response.length;
         if (response_length1 == 0) {
-            await axios.post('http://localhost:3000/addScoreUpdateRank', { user_id: Update_score.user_id, menu_id: Update_score.menu_id, score: Update_score.score });
+            await axios.post('http://localhost:3000/addScoreUpdateRank', { user_id: Update_score.user_id, menu_id: Update_score.menu_id, score: Update_score.score, comment: Update_score.comment });
             console.log("User score added successful!")
         }
         else {
@@ -71,8 +71,8 @@ class LogicScore {
         return res.status(201).send({ response: "You're Done!" })
     }
 
-    addScoreUpdateRankLogic = (user_id, menu_id, score, res) => {
-        new OperatorScore().addScoreOperator(user_id, menu_id, score, res);
+    addScoreUpdateRankLogic = (user_id, menu_id, score,comment, res) => {
+        new OperatorScore().addScoreOperator(user_id, menu_id, score,comment, res);
     }
 }
 

@@ -65,5 +65,12 @@ CREATE TABLE update_rank (
 	FOREIGN KEY(menu_id) REFERENCES menu(menu_id) ,
 	CONSTRAINT uprank_combinekey_id PRIMARY KEY(user_id , menu_id ) ,
 	score numeric(2,1),
+	comment text,
 	ur_timestamp timestamp
 );
+
+create table admin (
+    admin_id varchar(255),
+    password varchar(255),
+    timestamps timestamp
+); 

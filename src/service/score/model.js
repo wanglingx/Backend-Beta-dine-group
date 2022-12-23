@@ -11,5 +11,6 @@ module.exports = {
         user_id: '',
         menu_id: '',
         score: '',
+        comment: ''
     },
 }

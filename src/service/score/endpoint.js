@@ -31,6 +31,7 @@ class EndpointScore{
         this.User.firstname = req.body.firstname;
         this.User.lastname = req.body.lastname;
         this.Update_score.score = req.body.score;
+        this.Update_score.comment = req.body.comment;
         new LogicScore().addScoreLogic(this.User,this.Update_score, res);
     }
     
@@ -38,7 +39,8 @@ class EndpointScore{
         let user_id = req.body.user_id;
         let menu_id = req.body.menu_id;
         let score = req.body.score;
-        new LogicScore().addScoreUpdateRankLogic(user_id, menu_id, score,res);
+        let comment = req.body.comment;
+        new LogicScore().addScoreUpdateRankLogic(user_id, menu_id, score,comment,res);
     }
     
 }
