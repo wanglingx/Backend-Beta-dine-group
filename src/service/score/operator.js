@@ -49,13 +49,14 @@ class OperatorScore {
         })
     }
 
-    addScoreOperator = (user_id, menu_id, score, res) => {
-        let sql = `INSERT INTO update_rank(user_id,menu_id,score,ur_timestamp)
-                   VALUES(?,?,?,CURRENT_TIMESTAMP())`
+    addScoreOperator = (user_id, menu_id, score,comment, res) => {
+        let sql = `INSERT INTO update_rank(user_id,menu_id,score,comment,ur_timestamp)
+                   VALUES(?,?,?,?,CURRENT_TIMESTAMP())`
         connection.query(sql, [
             user_id,
             menu_id,
-            score
+            score,
+            comment
         ], function (err) {
             if (err) {
                 console.log(err);
@@ -68,10 +69,13 @@ class OperatorScore {
 
     UpdateScore24HOperator = (update_score, res) => {
         let sql = `UPDATE update_rank
-                   SET score = ?,ur_timestamp = CURRENT_TIMESTAMP()
+                   SET score = ?,
+                   comment = ?
+                   ur_timestamp = CURRENT_TIMESTAMP()
                    WHERE user_id = ? AND menu_id = ?`
         connection.query(sql, [
             update_score.score,
+            update_score.comment,
             update_score.user_id,
             update_score.menu_id
         ], function (err) {

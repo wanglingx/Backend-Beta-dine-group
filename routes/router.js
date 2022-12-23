@@ -4,7 +4,11 @@ const { EndpointSearch } = require('../src/service/search/endpoint');
 const { EndpointScore } = require('../src/service/score/endpoint');
 const { EndpointRank } = require('../src/service/rank/endpoint');
 const { EndpointSelect } = require('../src/service/select/endpoint');
-const { EndpointAdmin } = require('../src/service/admin/endpoint');
+const { EndpointAdmin } = require('../src/service/admin/auth/endpoint'); /* auth */
+const { EndpointDel } = require('../src/service/admin/delete/endpoint') /* delete */
+const { EndpointIns } = require('../src/service/admin/insert/endpoint') /* insert */
+const { EndpointUpd } = require('../src/service/admin/update/endpoint') /* update */
+
 
 //search router
 router.get("/search/:keyword", new EndpointSearch().searchEndpoint)
@@ -42,7 +46,7 @@ router.get("/Top4RestaurantInfo", new EndpointRank().getTop4RestaurantInfoEndpoi
 
 //select router
 router.get("/RetuarantInfo/restuarantid=:restuarant_id", new EndpointSelect().getRestuarantInfoEndpoint)
-
+router.get("/ResruatantAll" , new EndpointSelect().getAllRestaurantsInfoEndpoint)
 router.get("/MenuInfo/menuid=:menu_id", new EndpointSelect().getMenuInfoEndpoint)
 router.get("/ReligionInfo/religionid=:religion_id",new EndpointSelect().getReligionInfoEndpoint )
 router.get("/BestFoodInfo" ,new EndpointSelect(). getBestFoodInfoEndpoint  )
@@ -54,7 +58,9 @@ router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeIn
 
 
 //admin part
-/* Restaurant */
-/* Menu */
+/* auth */
+/* insert */
+/* delete */
+/* update */
 
 module.exports = router;
