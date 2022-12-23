@@ -87,6 +87,19 @@ class OperatorSelect {
                     }
             })
     }
+
+    getAllRestaurants = (res)=>{
+        let sql =`SELECT restaurant_id,restaurant_name , restaurant_time , phone_number , restaurant_picture  FROM restaurant`
+        connection.query(sql,[],
+            function (err, data){
+                if(err)
+                    console.log(err)
+                else{
+                    console.log(data)
+                    return res.status(201).send({response: data})
+                }
+            })
+    }
 }
 
 module.exports = {

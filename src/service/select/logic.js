@@ -22,6 +22,9 @@ class LogicSelect {
     getFoodtypeLogic = (foodtype_id , res) =>{
         new OperatorSelect(). getFoodtype(foodtype_id , res)
     }
+    getAllRestaurantsLogic = (res) =>{
+        new OperatorSelect() . getAllRestaurants(res)
+    }
 //     gethomeLogic =(res) =>{
 //         let response =  axios.get(`http://localhost:3000/BestRestuarantInfo` )
 //         // SelectbestRestaurant = response.data.response;

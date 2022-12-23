@@ -42,7 +42,7 @@ router.get("/Top4RestaurantInfo", new EndpointRank().getTop4RestaurantInfoEndpoi
 
 //select router
 router.get("/RetuarantInfo/restuarantid=:restuarant_id", new EndpointSelect().getRestuarantInfoEndpoint)
-
+router.get("/ResruatantAll" , new EndpointSelect().getAllRestaurantsInfoEndpoint)
 router.get("/MenuInfo/menuid=:menu_id", new EndpointSelect().getMenuInfoEndpoint)
 router.get("/ReligionInfo/religionid=:religion_id",new EndpointSelect().getReligionInfoEndpoint )
 router.get("/BestFoodInfo" ,new EndpointSelect(). getBestFoodInfoEndpoint  )
