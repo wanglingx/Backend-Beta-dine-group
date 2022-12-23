@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router()
 const { EndpointSearch } = require('../src/service/search/endpoint');
 const { EndpointScore } = require('../src/service/score/endpoint');
@@ -63,6 +64,19 @@ router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeIn
 //admin part
 /* auth */
 /* insert */
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './src/service/admin/insert/uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname.split('.')[file.originalname.split('.').length - 2] + '.' +
+            file.originalname.split('.')[file.originalname.split('.').length - 1]);
+    }
+})
+const upload = multer({ storage: storage })
+router.post("/addNewRestaurant", upload.single("file"), new EndpointIns().addNewRestaurantEndpoint);
+router.get("/findCurrentResId", new EndpointIns().findCurrentResIdEndpoint);
+
 /* delete */
 /* update */
 
