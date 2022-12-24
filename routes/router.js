@@ -59,8 +59,24 @@ router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeIn
 
 //admin part
 /* auth */
+
+
+
 /* insert */
+
+router.post("/test" , (req, res) => {
+    const test = req.query.name 
+    console.log(test)
+})
+
 /* delete */
+router.get("/deleteRestaurant/restaurantID=:restaurant_id", new EndpointDel().deleteRestaurantEndpoint)
+router.get("/deletemenu/menuID=:menu_id", new EndpointDel().deleteMenuEndpoint)
+
+
 /* update */
+
+
+
 
 module.exports = router;

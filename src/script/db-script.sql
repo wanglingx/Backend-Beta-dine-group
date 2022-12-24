@@ -69,8 +69,8 @@ CREATE TABLE update_rank (
 	ur_timestamp timestamp
 );
 
-create table admin (
-    admin_id varchar(255),
+CREATE TABLE admin (
+    admin_id varchar(255) PRIMARY KEY,
     password varchar(255),
     timestamps timestamp
 ); 
