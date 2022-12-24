@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router()
 const { EndpointSearch } = require('../src/service/search/endpoint');
 const { EndpointScore } = require('../src/service/score/endpoint');
@@ -9,6 +10,9 @@ const { EndpointDel } = require('../src/service/admin/delete/endpoint') /* delet
 const { EndpointIns } = require('../src/service/admin/insert/endpoint') /* insert */
 const { EndpointUpd } = require('../src/service/admin/update/endpoint') /* update */
 
+//login
+router.post('/login', new EndpointAdmin().loginEndpoint);
+router.post('/getPasswordMaching', new EndpointAdmin().getPasswordMaching);
 
 //search router
 router.get("/search/:keyword", new EndpointSearch().searchEndpoint)
@@ -63,11 +67,26 @@ router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeIn
 
 
 /* insert */
+<<<<<<< HEAD
 
 router.post("/test" , (req, res) => {
     const test = req.query.name 
     console.log(test)
 })
+=======
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './src/service/admin/insert/uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname.split('.')[file.originalname.split('.').length - 2] + '.' +
+            file.originalname.split('.')[file.originalname.split('.').length - 1]);
+    }
+})
+const upload = multer({ storage: storage })
+router.post("/addNewRestaurant", upload.single("file"), new EndpointIns().addNewRestaurantEndpoint);
+router.get("/findCurrentResId", new EndpointIns().findCurrentResIdEndpoint);
+>>>>>>> eacb310d0fe286cdee5bc627f26eb597e6985e58
 
 /* delete */
 router.get("/deleteRestaurant/restaurantID=:restaurant_id", new EndpointDel().deleteRestaurantEndpoint)

@@ -59,18 +59,24 @@ CREATE TABLE menu (
 );
 
 CREATE TABLE update_rank (
-	user_id varchar(255) ,
-	FOREIGN KEY(user_id) REFERENCES user(user_id) ,
-	menu_id varchar(255) ,
-	FOREIGN KEY(menu_id) REFERENCES menu(menu_id) ,
-	CONSTRAINT uprank_combinekey_id PRIMARY KEY(user_id , menu_id ) ,
-	score numeric(2,1),
-	comment text,
-	ur_timestamp timestamp
+    user_id varchar(255) ,
+    FOREIGN KEY(user_id) REFERENCES user(user_id) ,
+    menu_id varchar(255) ,
+    FOREIGN KEY(menu_id) REFERENCES menu(menu_id) ,
+    CONSTRAINT uprank_combinekey_id PRIMARY KEY(user_id , menu_id ) ,
+    score numeric(2,1),
+    commment text,
+    ur_timestamp timestamp
 );
+<<<<<<< HEAD
 
 CREATE TABLE admin (
     admin_id varchar(255) PRIMARY KEY,
+=======
+create table admin (
+    admin_id varchar(255),
+>>>>>>> eacb310d0fe286cdee5bc627f26eb597e6985e58
     password varchar(255),
     timestamps timestamp
-); 
+);
+

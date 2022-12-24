@@ -91,6 +91,7 @@ class LogicSearch {
     filterSearchByReligionOnlyLogic = async(religion_id, res) => {
         new OperatorSearch().getRestaurantbyReligionOnlyFilter(religion_id, res);
     }
+    
 
 }
 module.exports = {

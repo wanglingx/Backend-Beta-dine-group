@@ -148,8 +148,33 @@ VALUES ('MENU43','แกงส้ม',40,'แกงส้มพร้อมเ�
 INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
 VALUES ('MENU44','แกงจืดหมู',40,'เนื้อหมูแน่นๆ พร้อมกับสาหร่ายจากทะล',5.0,'https://www.eatandsleep.blog/wp-content/uploads/2021/01/SQ_EAS01731-1.webp','RES11',CURRENT_TIMESTAMP());
 
-INSERT INTO user(user_id,student_id,firstname,lastname,status,user_timestamp)
-VALUES ('USER01','63xxx000','defultName','defultLastname',0,CURRENT_TIMESTAMP());
+SELECT score FROM menu WHERE menu_id = 'MENU01';
+____________________________________________________________________________________________________________________________________________________________________
 
-INSERT INTO admin(admin_id,password,timestamps)
-VALUES ('ADMIN01','12345678910',CURRENT_TIMESTAMP());
+
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU25','ชานมไข่มุข',35,'ตัวชาไม่หวานมาก กลมกล่อม ตัวไข่มุกเหนียว หนึบหนับ และเยอะมาก เคี้ยวเพลินเลย',5.0,'https://www.chula.ac.th/wp-content/uploads/2020/01/cu_060163_000111.jpg','RES07',CURRENT_TIMESTAMP());
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU26','ชาเขียวมะลิ',30,'ตัวชาไม่หวานมาก กลมกล่อม หอมชามะลิ',5.0,'https://bluemochateas.com/wp-content/uploads/2021/08/เมนูชามะลิน้ำผึ้งมะนาว-e1629170865532-1252x1536.jpg.webp','RES07',CURRENT_TIMESTAMP());
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU27','อิตาเลี่ยนโซดา',25,'โซดาซ่า สดชื่น อร่อยรสผลไม้',5.0,'https://c.min.ms/t/d/member/c/42/42748/pagegallery/1541997946/39855f8e.jpg','RES07',CURRENT_TIMESTAMP());
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU28','ขนมปังปิ้ง',20,'ขนมปังปิ้ง กรอบ อร่อย หอมเนย มีหลายหน้าให้เลือก',5.0,'http://www.amphawanurak.com/elctfl/32/size5/466.jpg','RES07',CURRENT_TIMESTAMP());
+
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU29','ก๋วยเตี๋ยวเรือ',40,'ก๋วยเตี๋ยวเรือ แซ่บ ซี้ด อร่อยจนน้ำตาไหล',5.0,'https://i0.wp.com/goodlifeupdate.com/app/uploads/2021/04/image-130-edited.png','RES08',CURRENT_TIMESTAMP());
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU30','เกาเหลาหมู',40,'เกาเหลา หมูจุกๆ แซ่บไม่แพ้ก๋วยเตี๋ยวเรือ',5.0,'https://cdn1.th.orstatic.com/userphoto/photo/2/1U9/00D3AG75957704549A9C3Apx.jpg','RES08',CURRENT_TIMESTAMP());
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU31','เกาเหลาเนื้อ',40,'เกาเหลา เนื้อแน่นๆจุกๆ แซ่บไม่แพ้ก๋วยเตี๋ยวเรือ',5.0,'https://www.ryoiireview.com/upload/article/202104/1619171141_c90281a462d8208e79da74c4957e9f3b.jpg','RES08',CURRENT_TIMESTAMP());
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU32','ข้าวสวย',10,'ข้าวสวยหอมมะลิ นุ่มละมุนลิ้น',5.0,'http://food.mthai.com/app/uploads/2017/02/Japanese-sushi-1.jpg','RES08',CURRENT_TIMESTAMP());
+
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU33','เครป',40,'เครปกรอปๆ หอมกรุ่นๆ มีหน้าให้เลือกหลากหลาย',5.0,'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-basic-crepes-horizontal-1545245797.jpg','RES09',CURRENT_TIMESTAMP());
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU34','หมูปิ้ง',10,'หมูปิ้งหอมๆ',5.0,'https://img.wongnai.com/p/1920x0/2021/10/19/df3a74ac131143a0b69bbc43eee8884e.jpg','RES09',CURRENT_TIMESTAMP());
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU35','ไก่ปิ้ง',10,'ไก่ปิ้งอร่อยๆ',5.0,'https://i.ytimg.com/vi/0iXbezJfUb0/maxresdefault.jpg','RES09',CURRENT_TIMESTAMP());
+INSERT INTO menu(menu_id,menu_name,price,detail,score,menu_picture,restaurant_id,menu_timestamp) 
+VALUES ('MENU36','ข้าวเหนียว',5,'ข้าวเหนียวร้อนๆ ออกจากเตาใหม่ๆ',5.0,'https://s3.theasianparent.com/cdn-cgi/image/width=700,quality=95/tap-assets-prod/wp-content/uploads/sites/25/2021/05/3-6-300x300.jpg','RES09',CURRENT_TIMESTAMP());
