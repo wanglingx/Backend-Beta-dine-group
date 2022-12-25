@@ -63,26 +63,23 @@ router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeIn
 
 //admin part
 /* auth */
+
+
+
 /* insert */
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './src/service/admin/insert/uploads')
-    },
-    filename: (req, file, cb) => {
-        if (req.file.originalname == null) {
-            return
-        }
-            cb(null, file.originalname.split('.')[file.originalname.split('.').length - 2] + '.' +
-            file.originalname.split('.')[file.originalname.split('.').length - 1]);
-    },
+
+router.post("/test" , (req, res) => {
+    const test = req.query.name 
+    console.log(test)
 })
-const upload = multer({ storage: storage })
-router.post("/addNewRestaurant", upload.single("file"), new EndpointIns().addNewRestaurantEndpoint);
-router.get("/findCurrentResId", new EndpointIns().findCurrentResIdEndpoint);
 
 router.get("/findCurrentMenuId", new EndpointIns().findCurrentMenuIdEndpoint);
 
 /* delete */
+router.get("/deleteRestaurant/restaurantID=:restaurant_id", new EndpointDel().deleteRestaurantEndpoint)
+router.get("/deletemenu/menuID=:menu_id", new EndpointDel().deleteMenuEndpoint)
+
+
 /* update */
 
 /* report */

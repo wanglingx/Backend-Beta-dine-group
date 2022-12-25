@@ -68,8 +68,14 @@ CREATE TABLE update_rank (
     commment text,
     ur_timestamp timestamp
 );
+<<<<<<< HEAD
+
+CREATE TABLE admin (
+    admin_id varchar(255) PRIMARY KEY,
+=======
 create table admin (
     admin_id varchar(255),
+>>>>>>> eacb310d0fe286cdee5bc627f26eb597e6985e58
     password varchar(255),
     timestamps timestamp
 );
