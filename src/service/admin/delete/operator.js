@@ -22,9 +22,6 @@ class OperationDel {
         })
     }
 
-
-
-    
     //menu
     deletemenu = (menuid , res) => {
         let sql = `DELETE FROM menu WHERE menu_id = ? ;`

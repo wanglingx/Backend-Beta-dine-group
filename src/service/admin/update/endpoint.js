@@ -1,5 +1,5 @@
 const { LogicUpd } = require('./logic');
-const model = require('./model');
+const model = require('./model')
 class EndpointUpd {
     constructor() {
         this.resInfo = model.restaurantInfo

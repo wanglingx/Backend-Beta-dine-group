@@ -62,30 +62,61 @@ router.get("/menuforadmin/menuid=:menu_id" , new EndpointSelect().getmenuforadmi
 //router.get("/")
 // router.get("/home" , new EndpointSelect().gethomeEndpoint)
 
-
 //admin part
 /* auth */
-
-
-
 /* insert */
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './src/service/admin/insert/uploads')
+    destination: (req, file, callback) => {
+        callback(null, './src/service/admin/insert/uploads')
     },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname.split('.')[file.originalname.split('.').length - 2] + '.' +
+    filename: (req, file, callback) => {
+        callback(null, file.originalname.split('.')[file.originalname.split('.').length - 2] + '.' +
             file.originalname.split('.')[file.originalname.split('.').length - 1]);
     }
 })
-const upload = multer({ storage: storage })
-router.post("/addNewRestaurant", upload.single("file"), new EndpointIns().addNewRestaurantEndpoint);
+
+const upload = multer({
+    storage: storage,
+    fileFilter: (req, file, callback) => {
+        var ext = path.extname(file.originalname);
+        if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
+            return callback(new Error('Only images are allowed'))
+        }
+            callback(null, true)
+    },
+    limits: {
+        fileSize: 1024 * 1024
+    }
+})
+
+//add new Restaurant Front-end Connect
+router.post("/addNewRestaurant", upload.single("file"), new EndpointIns().addNewRestaurantEndpoint,
+    (error, req, res, next) => {
+        if (error) {
+           return res.status(400).send({ error: error.message }) 
+        }
+        else {
+            new EndpointIns().addNewRestaurantEndpoint
+        }
+});
+
+//add new Menu Front-end Connect
+router.get("/addNewMenu/:restaurant_id", upload.single("file"), new EndpointIns().addNewMenuEndpoint,
+    (error, req, res, next) => {
+        if (error) {
+            return res.status(400).send({ error: error.message })
+        }
+        else {
+            new EndpointIns().addNewMenuEndpoint
+        }
+});
+
 router.get("/findCurrentResId", new EndpointIns().findCurrentResIdEndpoint);
+router.get("/findCurrentMenuId", new EndpointIns().findCurrentMenuIdEndpoint);
 
 /* delete */
 router.get("/deleteRestaurant/restaurantID=:restaurant_id", new EndpointDel().deleteRestaurantEndpoint)
 router.get("/deletemenu/menuID=:menu_id", new EndpointDel().deleteMenuEndpoint)
-
 
 /* update */
 const storage1 = multer.diskStorage({
