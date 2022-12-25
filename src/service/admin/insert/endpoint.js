@@ -1,6 +1,5 @@
 const { LogicIns } = require('./logic');
 const model = require('./model');
-const upload1 = require('../../../../routes/router')
 
 class EndpointIns {
     constructor() {
