@@ -52,6 +52,64 @@ class OperationUpd {
 
             })
     }
+
+
+updateRestaurant = (resInfo ,res) =>{
+    let sql =`UPDATE restaurant
+    SET restaurant_name = ? ,
+    restaurant_time = ? ,
+    phone_number = ? ,
+    restaurant_picture = ? ,
+    canteen_id = ? ,
+    religion_id = ?,
+    foodtype_id =?
+    WHERE restaurant_id = ? ;`
+    connection.query(sql, [
+        resInfo.restaurant_name,
+        resInfo.restaurant_time,
+        resInfo.phone_number,
+        resInfo.restaurant_picture,
+        resInfo.canteen_id,
+        resInfo.religion_id,
+        resInfo.foodtype_id,
+        resInfo.restaurant_id
+    ],
+        function (err, data){
+            if(err)
+                console.log(err)
+            else{
+                console.log(data)
+                return res.status(201).send({response: 'update restaurant finish'})
+            }
+
+        })
+}
+
+updateMenu =(menuInfo , res) =>{
+    console.log(menuInfo)
+    let sql =`UPDATE menu 
+    SET menu_name = ? ,
+        price =?,
+        detail =?,
+        menu_picture =?
+    WHERE menu_id =?;`
+        connection.query(sql, [
+            menuInfo.menu_name,
+            menuInfo.price,
+            menuInfo.details,
+            menuInfo.menu_picture,
+            menuInfo.menu_id
+        ],
+            function (err, data){
+                if(err)
+                    console.log(err)
+                else{
+                    console.log(data)
+                    return res.status(201).send({response: 'update menu finish'})
+                }
+    
+            })
+}
 }
 module.exports = {
     OperationUpd

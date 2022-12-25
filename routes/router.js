@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const path = require('path');
 const router = express.Router()
 const { EndpointSearch } = require('../src/service/search/endpoint');
 const { EndpointScore } = require('../src/service/score/endpoint');
@@ -89,18 +90,31 @@ router.get("/deletemenu/menuID=:menu_id", new EndpointDel().deleteMenuEndpoint)
 /* update */
 const storage1 = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './src/service/admin/insert/uploads')
+        cb(null, './src/service/admin/update/uploads')
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname.split('.')[file.originalname.split('.').length - 2] + '.' +
             file.originalname.split('.')[file.originalname.split('.').length - 1]);
     }
 })
-const upload1 = multer({ storage: storage1 })
+var upload1 = multer({ 
+    storage: storage1 ,
+    fileFilter: (req, file, callback) => {
+        var ext = path.extname(file.originalname);
+        if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
+            return callback(new Error('Only images are allowed'))
+        }
+            callback(null, true)
+    },
+    limits: {
+        fileSize: 1024 * 1024
+    }
+})
 router.get("/checkcanteen/:canteen_name" , new EndpointUpd().checkcanteennameEndpoint)
 router.get("/checkreligion/:religion_name" , new EndpointUpd().checkreligionnameEndpoint)
 router.get("/checkrefoodtype/:foodtype_name" , new EndpointUpd().checkfoodtypenameEndpoint)
 
 
-router.post("/updaterestaurant",new EndpointUpd().updaterestaurantEndpoint)
+router.post("/updaterestaurant",upload1.single("file"),new EndpointUpd().updaterestaurantEndpoint)
+router.post("/updatemenu",upload1.single("file"),new EndpointUpd().updatemenuEndpoint)
 module.exports = router;

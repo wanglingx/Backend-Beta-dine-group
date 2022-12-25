@@ -11,5 +11,12 @@ module.exports = {
         religion_name: '',
         foodtype_id: '',
         foodtype_name: '',
+    },
+    menuInfo:{
+        menu_id:'',
+        menu_name:'',
+        price:'',
+        details:'',
+        menu_picture:''
     }
 }
