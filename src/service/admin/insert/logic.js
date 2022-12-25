@@ -10,7 +10,7 @@ class LogicIns {
 
     addNewRestaurantLogic = async (filePath , resInfo , res) => {
         //validate Info
-        if (!resInfo.restaurant_name || !resInfo.restaurant_time || !resInfo.phone_numbe || !resInfo.canteen_id || !resInfo.religion_id || !resInfo.foodtype_id || !filePath) {
+        if (!resInfo.restaurant_name || !resInfo.restaurant_time || !resInfo.phone_number || !resInfo.canteen_id || !resInfo.religion_id || !resInfo.foodtype_id || !filePath) {
             // delete file
             fs.unlink(filePath, (err) => {
                 if (err) {

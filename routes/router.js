@@ -55,8 +55,9 @@ router.get("/MenuInfo/menuid=:menu_id", new EndpointSelect().getMenuInfoEndpoint
 router.get("/ReligionInfo/religionid=:religion_id",new EndpointSelect().getReligionInfoEndpoint )
 router.get("/BestFoodInfo" ,new EndpointSelect(). getBestFoodInfoEndpoint  )
 router.get("/BestRestuarantInfo", new EndpointSelect().getBestRestuarantInfoEndpoint)
-
 router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeInfoEndpoint)
+router.get("/restuarantforadmin/restaurantid=:restaurant_id" , new EndpointSelect().getrestuarantforadminEndpoint)
+router.get("/menuforadmin/menuid=:menu_id" , new EndpointSelect().getmenuforadminEndpoint)
 //router.get("/")
 // router.get("/home" , new EndpointSelect().gethomeEndpoint)
 
@@ -67,13 +68,6 @@ router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeIn
 
 
 /* insert */
-<<<<<<< HEAD
-
-router.post("/test" , (req, res) => {
-    const test = req.query.name 
-    console.log(test)
-})
-=======
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './src/service/admin/insert/uploads')
@@ -86,7 +80,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 router.post("/addNewRestaurant", upload.single("file"), new EndpointIns().addNewRestaurantEndpoint);
 router.get("/findCurrentResId", new EndpointIns().findCurrentResIdEndpoint);
->>>>>>> eacb310d0fe286cdee5bc627f26eb597e6985e58
 
 /* delete */
 router.get("/deleteRestaurant/restaurantID=:restaurant_id", new EndpointDel().deleteRestaurantEndpoint)
@@ -94,8 +87,20 @@ router.get("/deletemenu/menuID=:menu_id", new EndpointDel().deleteMenuEndpoint)
 
 
 /* update */
+const storage1 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './src/service/admin/insert/uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname.split('.')[file.originalname.split('.').length - 2] + '.' +
+            file.originalname.split('.')[file.originalname.split('.').length - 1]);
+    }
+})
+const upload1 = multer({ storage: storage1 })
+router.get("/checkcanteen/:canteen_name" , new EndpointUpd().checkcanteennameEndpoint)
+router.get("/checkreligion/:religion_name" , new EndpointUpd().checkreligionnameEndpoint)
+router.get("/checkrefoodtype/:foodtype_name" , new EndpointUpd().checkfoodtypenameEndpoint)
 
 
-
-
+router.post("/updaterestaurant",new EndpointUpd().updaterestaurantEndpoint)
 module.exports = router;

@@ -33,6 +33,15 @@ class EndpointSelect {
     getAllRestaurantsInfoEndpoint = (req,res) => {
         new LogicSelect(). getAllRestaurantsLogic(res)
     }
+    getrestuarantforadminEndpoint = (req,res) => {
+        let restaurantid = req.params.restaurant_id
+        console.log(restaurantid)
+        new LogicSelect().getrestaurantforadminLogin(restaurantid , res)
+    }
+    getmenuforadminEndpoint = (req,res) => {
+        let menuID = req.params.menu_id
+        new LogicSelect().getmenuforadminLogin(menuID , res)
+    }
     // gethomeEndpoint =(req, res) => {
     //     new LogicSelect(). gethomeLogic(res)
     // }
