@@ -1,5 +1,5 @@
 const { LogicUpd } = require('./logic');
-const model = require('./model');
+const model = require('./model')
 class EndpointUpd {
     constructor() {
         this.resInfo = model.restaurantInfo
@@ -27,7 +27,7 @@ class EndpointUpd {
         this.resInfo.canteen_name = req.body.canteen_name
         this.resInfo.foodtype_name = req.body.foodtype_name
         this.resInfo.religion_name = req.body.religion_name
-        console.log("id >>>>>",req.body.restaurant_name)
+        console.log(this.resInfo)
         //this.resInfo.restaurant_picture = req.body.restaurant_picture
         new LogicUpd().updaterestaurantLogic(this.resInfo,res)
     }

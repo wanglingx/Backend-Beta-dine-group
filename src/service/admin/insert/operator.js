@@ -43,23 +43,54 @@ class OperationIns {
                 console.log(err)
             }
             else {
-                return res.status(201).send("add new restaurant success!")
+                return res.status(201).send({ response: "add new restaurant success!" })
             }
         })
     }
 
-    // findCurrentResIdOperator = (res) => {
-    //     let sql = `SELECT menu_id FROM menu ORDER BY menu _id DESC LIMIT 1`
-    //     connection.query(sql, function (err, data) {
-    //         if (err) {
-    //             console.log(err)
-    //         }
-    //         else {
-    //             return res.status(201).send({ response: data });
-    //         }
-    //     })
-    // }
+    findCurrentMenuIdOperator = (res) => {
+        let sql = `SELECT menu_id FROM menu ORDER BY menu_id DESC LIMIT 1`
+        connection.query(sql, function (err, data) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(201).send({ response: data });
+            }
+        })
+    }
    
+    addNewMenuOperator = (menuInfo, res) => {
+        let sql = ` INSERT INTO menu(
+                        menu_id,
+                        menu_name,
+                        price,
+                        detail,
+                        score,
+                        menu_picture,
+                        restaurant_id,
+                        menu_timestamp
+                    ) 
+                    VALUES 
+                    (
+                        ?,?,?,?,?,?,?, CURRENT_TIMESTAMP());`
+        connection.query(sql, [
+            menuInfo.menu_id,
+            menuInfo.menu_name,
+            menuInfo.price,
+            menuInfo.detail,
+            menuInfo.score,
+            menuInfo.menu_picture,
+            menuInfo.restaurant_id,
+        ], function (err, data) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(201).send({ response: "add new menu success!"})
+            }
+        })
+    }
 }
 module.exports = {
     OperationIns
