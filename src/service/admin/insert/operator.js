@@ -47,6 +47,18 @@ class OperationIns {
             }
         })
     }
+
+    // findCurrentResIdOperator = (res) => {
+    //     let sql = `SELECT menu_id FROM menu ORDER BY menu _id DESC LIMIT 1`
+    //     connection.query(sql, function (err, data) {
+    //         if (err) {
+    //             console.log(err)
+    //         }
+    //         else {
+    //             return res.status(201).send({ response: data });
+    //         }
+    //     })
+    // }
    
 }
 module.exports = {

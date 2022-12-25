@@ -69,15 +69,22 @@ const storage = multer.diskStorage({
         cb(null, './src/service/admin/insert/uploads')
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname.split('.')[file.originalname.split('.').length - 2] + '.' +
+        if (req.file.originalname == null) {
+            return
+        }
+            cb(null, file.originalname.split('.')[file.originalname.split('.').length - 2] + '.' +
             file.originalname.split('.')[file.originalname.split('.').length - 1]);
-    }
+    },
 })
 const upload = multer({ storage: storage })
 router.post("/addNewRestaurant", upload.single("file"), new EndpointIns().addNewRestaurantEndpoint);
 router.get("/findCurrentResId", new EndpointIns().findCurrentResIdEndpoint);
 
+router.get("/findCurrentMenuId", new EndpointIns().findCurrentMenuIdEndpoint);
+
 /* delete */
 /* update */
+
+/* report */
 
 module.exports = router;

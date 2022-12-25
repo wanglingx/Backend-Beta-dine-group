@@ -19,6 +19,10 @@ class EndpointIns {
         this.resInfo.foodtype_id = req.body.foodtype_id
         new LogicIns().addNewRestaurantLogic(filePath, this.resInfo, res);
     }
+
+    findCurrentMenuIdEndpoint = (req, res) => {
+        new LogicIns().findCurrentMenuIdLogic(res);
+    }
 }
 module.exports = {
     EndpointIns
