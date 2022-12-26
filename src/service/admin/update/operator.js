@@ -1,6 +1,6 @@
-
 const connection = require('../../../../database/connection');
 class OperationUpd {
+
     checkcanteen =(canteenname , res)=>{
         canteenname = "%"+canteenname+"%";
         let sql = `select canteen.canteen_id from canteen 
@@ -16,6 +16,7 @@ class OperationUpd {
 
             })
     }
+
     checkreligion = (religionname , res)=>{
         religionname = "%"+religionname+"%";
         let sql = `select religion_id from religion
@@ -32,9 +33,6 @@ class OperationUpd {
 
             })
     }
-
-
-
 
     checkfoodtype = (foodtypename , res)=>{
         foodtypename = "%"+foodtypename+"%";
@@ -53,7 +51,6 @@ class OperationUpd {
             })
     }
 
-
 updateRestaurant = (resInfo ,res) =>{
     let sql =`UPDATE restaurant
     SET restaurant_name = ? ,
@@ -62,7 +59,8 @@ updateRestaurant = (resInfo ,res) =>{
     restaurant_picture = ? ,
     canteen_id = ? ,
     religion_id = ?,
-    foodtype_id =?
+    foodtype_id =?,
+    restaurant_timestamp = CURRENT_TIMESTAMP()
     WHERE restaurant_id = ? ;`
     connection.query(sql, [
         resInfo.restaurant_name,
@@ -91,7 +89,8 @@ updateMenu =(menuInfo , res) =>{
     SET menu_name = ? ,
         price =?,
         detail =?,
-        menu_picture =?
+        menu_picture =?,
+        menu_timestamp = CURRENT_TIMESTAMP()
     WHERE menu_id =?;`
         connection.query(sql, [
             menuInfo.menu_name,
@@ -109,7 +108,7 @@ updateMenu =(menuInfo , res) =>{
                 }
     
             })
-}
+    }
 }
 module.exports = {
     OperationUpd
