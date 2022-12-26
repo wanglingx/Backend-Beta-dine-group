@@ -30,6 +30,11 @@ class EndpointSelect {
         let foodtype_id = req.params.foodtype_id
         new LogicSelect(). getFoodtypeLogic(foodtype_id , res)
     }
+    getrestaurantscoreEndpoint =(req,res) => {
+        const score = req.params.score
+        new LogicSelect(). getrestaurantscoreLogic(score,res)
+    }
+
     getAllRestaurantsInfoEndpoint = (req,res) => {
         new LogicSelect(). getAllRestaurantsLogic(res)
     }

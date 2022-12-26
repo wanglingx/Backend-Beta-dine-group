@@ -31,6 +31,9 @@ class LogicSelect {
     getmenuforadminLogin = (menuid, res) =>{
         new OperatorSelect().getmenuforadmin(menuid,res)
     } 
+    getrestaurantscoreLogic =(score ,res) =>{
+        new OperatorSelect().getrestaurantscore(score , res)
+    }
 //     gethomeLogic =(res) =>{
 //         let response =  axios.get(`http://localhost:3000/BestRestuarantInfo` )
 //         // SelectbestRestaurant = response.data.response;

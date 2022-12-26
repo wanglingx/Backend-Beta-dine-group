@@ -53,6 +53,9 @@ router.get("/ReligionInfo/religionid=:religion_id",new EndpointSelect().getRelig
 router.get("/BestFoodInfo" ,new EndpointSelect(). getBestFoodInfoEndpoint  )
 router.get("/BestRestuarantInfo", new EndpointSelect().getBestRestuarantInfoEndpoint)
 router.get("/foodType/foodType=:foodtype_id", new EndpointSelect().getFoodtypeInfoEndpoint)
+router.get("/getrestaurantforscore/score=:score" , new EndpointSelect().getrestaurantscoreEndpoint)
+
+//admin
 router.get("/restuarantforadmin/restaurantid=:restaurant_id" , new EndpointSelect().getrestuarantforadminEndpoint)
 router.get("/menuforadmin/menuid=:menu_id" , new EndpointSelect().getmenuforadminEndpoint)
 // router.get("/home" , new EndpointSelect().gethomeEndpoint)
