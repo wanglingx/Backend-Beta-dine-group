@@ -1,6 +1,7 @@
 const { LogicAdmin } = require('./logic');
 const model = require('./model');
 class EndpointAdmin {
+    
     loginEndpoint = (req, res) => {
         let username = req.query.username;
         let password = req.query.password;

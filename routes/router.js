@@ -11,10 +11,6 @@ const { EndpointDel } = require('../src/service/admin/delete/endpoint') /* delet
 const { EndpointIns } = require('../src/service/admin/insert/endpoint') /* insert */
 const { EndpointUpd } = require('../src/service/admin/update/endpoint') /* update */
 
-//login
-router.post('/login', new EndpointAdmin().loginEndpoint);
-router.post('/getPasswordMaching', new EndpointAdmin().getPasswordMaching);
-
 //search router
 router.get("/search/:keyword", new EndpointSearch().searchEndpoint)
 router.get("/seachbyReligion/:religion", new EndpointSearch().searchbyReligionEndpoint)
@@ -62,11 +58,14 @@ router.get("/getrestaurantforscore/score=:score" , new EndpointSelect().getresta
 //admin
 router.get("/restuarantforadmin/restaurantid=:restaurant_id" , new EndpointSelect().getrestuarantforadminEndpoint)
 router.get("/menuforadmin/menuid=:menu_id" , new EndpointSelect().getmenuforadminEndpoint)
-//router.get("/")
 // router.get("/home" , new EndpointSelect().gethomeEndpoint)
 
 //admin part
+
 /* auth */
+router.post('/login', new EndpointAdmin().loginEndpoint);
+router.post('/getPasswordMaching', new EndpointAdmin().getPasswordMaching);
+
 /* insert */
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -92,7 +91,7 @@ const upload = multer({
     }
 })
 
-//add new Restaurant Front-end Connect
+/* add new Restaurant Front-end Connect */
 router.post("/addNewRestaurant", upload.single("file"), new EndpointIns().addNewRestaurantEndpoint,
     (error, req, res, next) => {
         if (error) {
@@ -103,7 +102,7 @@ router.post("/addNewRestaurant", upload.single("file"), new EndpointIns().addNew
         }
 });
 
-//add new Menu Front-end Connect
+/* add new Menu Front-end Connect */
 router.get("/addNewMenu/:restaurant_id", upload.single("file"), new EndpointIns().addNewMenuEndpoint,
     (error, req, res, next) => {
         if (error) {
@@ -131,6 +130,7 @@ const storage1 = multer.diskStorage({
             file.originalname.split('.')[file.originalname.split('.').length - 1]);
     }
 })
+
 var upload1 = multer({ 
     storage: storage1 ,
     fileFilter: (req, file, callback) => {
@@ -144,11 +144,31 @@ var upload1 = multer({
         fileSize: 1024 * 1024
     }
 })
+
 router.get("/checkcanteen/:canteen_name" , new EndpointUpd().checkcanteennameEndpoint)
 router.get("/checkreligion/:religion_name" , new EndpointUpd().checkreligionnameEndpoint)
 router.get("/checkrefoodtype/:foodtype_name" , new EndpointUpd().checkfoodtypenameEndpoint)
 
+/** Update Restaurant Front-end connect */
+router.post("/updaterestaurant", upload1.single("file"), new EndpointUpd().updaterestaurantEndpoint,
+    (error, req, res, next) => {
+        if (error) {
+            return res.status(400).send({ error: error.message })
+        }
+        else {
+            new EndpointUpd().updaterestaurantEndpoint
+        }
+    });
 
-router.post("/updaterestaurant",upload1.single("file"),new EndpointUpd().updaterestaurantEndpoint)
-router.post("/updatemenu",upload1.single("file"),new EndpointUpd().updatemenuEndpoint)
+/** Update Menu Front-end connect */
+router.post("/updatemenu", upload1.single("file"), new EndpointUpd().updatemenuEndpoint,
+    (error, req, res, next) => {
+        if (error) {
+            return res.status(400).send({ error: error.message })
+        }
+        else {
+            new EndpointUpd().updatemenuEndpoint
+        }
+    });
+
 module.exports = router;
