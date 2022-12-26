@@ -129,6 +129,24 @@ class OperatorSelect {
             }
             )
     }
+    getrestaurantscore =(score ,res)=>{
+        let sql = `SELECT r.restaurant_id ,r.restaurant_name ,r.restaurant_time ,r.phone_number ,r.restaurant_score 
+        ,r.restaurant_picture ,c.canteen_name ,re.religion_name ,f.foodtype_name 
+        FROM restaurant as r
+        inner join canteen as c on r.canteen_id  = c.canteen_id
+        inner join religion as re on r.religion_id = re.religion_id 
+        inner join foodtype as f on r.foodtype_id  = f.foodtype_id 
+        WHERE restaurant_score >= ?;`
+        connection.query(sql , [score] ,
+            function(err , data) {
+                if(err) console.log(err)
+                else {
+                    console.log(data)
+                    return res.status(201).send({response:data})
+                }
+            }
+        )
+    }
 }
 
 module.exports = {
