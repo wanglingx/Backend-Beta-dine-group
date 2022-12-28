@@ -1,8 +1,45 @@
 const connection = require('../../../../database/connection');
 class OperationIns {
+
     findCurrentResIdOperator = (res) => {
         let sql = `SELECT restaurant_id FROM restaurant ORDER BY restaurant_id DESC LIMIT 1`
         connection.query(sql, function (err, data) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(201).send({ response: data });
+            }
+        })
+    }
+
+    findCanteenIdOperator = (canteen_name, res) => {
+        let sql = `SELECT canteen_id FROM canteen WHERE canteen_name = ?`
+        connection.query(sql,[canteen_name] ,function (err, data) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(201).send({ response: data });
+            }
+        })
+    }
+
+    findReligionIdOperator = (religion_name, res) => {
+        let sql = `SELECT religion_id FROM religion WHERE religion_name = ?`
+        connection.query(sql, [religion_name], function (err, data) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(201).send({ response: data });
+            }
+        })
+    }
+
+    findFoodtypeIdOperator = (foodtype_name, res) => {
+        let sql = `SELECT foodtype_id FROM foodtype WHERE foodtype_name = ?`
+        connection.query(sql, [foodtype_name], function (err, data) {
             if (err) {
                 console.log(err)
             }

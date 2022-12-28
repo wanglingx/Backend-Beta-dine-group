@@ -115,6 +115,9 @@ router.get("/addNewMenu/:restaurant_id", upload.single("file"), new EndpointIns(
 
 router.get("/findCurrentResId", new EndpointIns().findCurrentResIdEndpoint);
 router.get("/findCurrentMenuId", new EndpointIns().findCurrentMenuIdEndpoint);
+router.post("/findCanteen-id", new EndpointIns().findCanteenIdEndpoint);
+router.post("/findReligion-id", new EndpointIns().findReligionIdEndpoint);
+router.post("/findFoodtype-id", new EndpointIns().findFoodtypeIdEndpoint);
 
 /* delete */
 router.get("/deleteRestaurant/restaurantID=:restaurant_id", new EndpointDel().deleteRestaurantEndpoint)

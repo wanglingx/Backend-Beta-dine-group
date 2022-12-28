@@ -7,8 +7,11 @@ module.exports = {
         restaurant_score: 5,
         restaurant_picture: '',
         canteen_id: '',
+        canteen_name: '',
         religion_id: '',
+        religion_name: '',
         foodtype_id: '',
+        foodtype_name: '',
         restaurant_timestamp: ''
     },
     menuInfo: {

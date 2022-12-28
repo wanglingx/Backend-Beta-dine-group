@@ -9,9 +9,21 @@ class LogicIns {
         new OperationIns().findCurrentResIdOperator(res);
     }
 
+    findCanteenIdLogic = (canteen_name, res) => {
+        new OperationIns().findCanteenIdOperator(canteen_name, res);
+    }
+
+    findReligionIdLogic = (religion_name, res) => {
+        new OperationIns().findReligionIdOperator(religion_name, res);
+    }
+
+    findFoodtypeIdLogic = (foodtype_name, res) => {
+        new OperationIns().findFoodtypeIdOperator(foodtype_name, res);
+    }
+
     addNewRestaurantLogic = async (filePath , resInfo , res) => {
         //validate Info
-        if (!resInfo.restaurant_name || !resInfo.restaurant_time || !resInfo.phone_number || !resInfo.canteen_id || !resInfo.religion_id || !resInfo.foodtype_id || !filePath) {
+        if (!resInfo.restaurant_name || !resInfo.restaurant_time || !resInfo.phone_number || !resInfo.canteen_name || !resInfo.religion_name || !resInfo.foodtype_name || !filePath) {
             // delete file
             fs.unlink(filePath, (err) => {
                 if (err) {
@@ -21,6 +33,19 @@ class LogicIns {
             })
             return res.status(401).send({ response: "cannot add new restaurant!" })
         }
+
+        /** find canteen id  */
+        let responseCanteen = await axios.post('http://localhost:3000/findCanteen-id', { canteen_name: resInfo.canteen_name })
+        resInfo.canteen_id = responseCanteen.data.response[0].canteen_id
+        console.log("found canteen id!")
+        /** find religion_id */
+        let responseReligion = await axios.post('http://localhost:3000/findReligion-id', { religion_name: resInfo.religion_name })
+        resInfo.religion_id = responseReligion.data.response[0].religion_id
+        console.log("found religion id!")
+        /** find foodtype_id */
+        let responseFoodtype = await axios.post('http://localhost:3000/findFoodtype-id', { foodtype_name: resInfo.foodtype_name })
+        resInfo.foodtype_id = responseFoodtype.data.response[0].foodtype_id
+        console.log("found foodtype id!")
         
         //get current Id
         let response = await axios.get('http://localhost:3000/findCurrentResId')
@@ -45,11 +70,12 @@ class LogicIns {
             urlEndpoint: "https://ik.imagekit.io/wanglingx/Se-project/"
         });
 
-        fs.readFile(filePath , function (err, data) {
-            if (err) throw err; // Fail if the file can't be read.
+        fs.readFile(filePath, function (err, data) {
+            if (err)
+                throw err; // Fail if the file can't be read.
             imagekit.upload({
-                file: data, //required
-                fileName: fileName, //required
+                file: data,
+                fileName: fileName,
                 tags: ["tag1", "tag2"]
             }, function (error, result) {
                 if (error) {
@@ -70,7 +96,6 @@ class LogicIns {
                 return
             }
         })
-
     }
 
     findCurrentMenuIdLogic = (res) => {

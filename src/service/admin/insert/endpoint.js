@@ -11,6 +11,21 @@ class EndpointIns {
         new LogicIns().findCurrentResIdLogic(res);
     }
 
+    findCanteenIdEndpoint = (req, res) => {
+        let canteen_name = req.body.canteen_name;
+        new LogicIns().findCanteenIdLogic(canteen_name, res);
+    }
+
+    findReligionIdEndpoint = (req, res) => {
+        let religion_name = req.body.religion_name;
+        new LogicIns().findReligionIdLogic(religion_name, res);
+    }
+
+    findFoodtypeIdEndpoint = (req, res) => {
+        let foodtype_name = req.body.foodtype_name;
+        new LogicIns().findFoodtypeIdLogic(foodtype_name, res);
+    }
+
     addNewRestaurantEndpoint = (req, res) => {
         let filePath;
         if (req.file) {
@@ -22,9 +37,9 @@ class EndpointIns {
         this.resInfo.restaurant_name = req.body.restaurant_name
         this.resInfo.restaurant_time = req.body.restaurant_time
         this.resInfo.phone_number = req.body.phone_number
-        this.resInfo.canteen_id = req.body.canteen_id
-        this.resInfo.religion_id = req.body.religion_id
-        this.resInfo.foodtype_id = req.body.foodtype_id
+        this.resInfo.canteen_name = req.body.canteen_name
+        this.resInfo.religion_name = req.body.religion_name
+        this.resInfo.foodtype_name = req.body.foodtype_name
         new LogicIns().addNewRestaurantLogic(filePath, this.resInfo, res);
     }
 
